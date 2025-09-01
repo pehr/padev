@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="theme.css" />
+  <style id="inline-collapsed-fix">
+    /* Ensure only icons show when sidebar is collapsed */
+    .sidebar-collapsed .nav-label,
+    .sidebar-collapsed .section-title,
+    .sidebar-collapsed .quick-links { display: none !important; }
+
+    /* Keep a slim rail visible even without theme.css loaded */
+    .sidebar-collapsed { width: var(--sidebar-w-collapsed, 56px) !important; overflow: hidden; }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) { .sidebar-transition { transition: none !important; } }
+  </style>
+</head>
+<body class="min-h-screen bg-[var(--muted-bg)] text-slate-800">
+  <!-- Header -->
+  <header class="themed-header w-full" style="height: var(--header-h);">
+    <div class="mx-auto max-w-6xl h-full px-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="https://via.placeholder.com/64" alt="Your portrait" class="h-10 w-10 rounded-full object-cover ring-2 ring-white/20" />
+        <div class="leading-tight">
+          <h1 class="text-lg font-semibold tracking-tight">Pehr Assarsson</h1>
+          <p class="text-xs opacity-80">Cloud Solution Architect • Sweden</p>
+        </div>
+      </div>
+      <nav aria-label="Main menu" class="hidden md:block">
+        <ul class="flex items-center gap-4 text-sm">
+          <li><a href="#projects" class="opacity-90 hover:opacity-100 underline-offset-4 hover:underline">Projects</a></li>
+          <li><a href="#contact" class="opacity-90 hover:opacity-100 underline-offset-4 hover:underline">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Row: Sidebar + Main (fills viewport under header) -->
+  <div class="w-full flex gap-0 h-[calc(100vh-var(--header-h))] min-h-0 overflow-hidden">
+    <!-- Sidebar -->
+    <aside id="sidebar"
+           class="themed-sidebar sidebar-transition shrink-0 p-3 flex flex-col sticky top-0 h-[calc(100vh-var(--header-h))]"
+           style="width: var(--sidebar-w);">
+      <div class="flex items-center justify-between">
+        <h2 class="section-title text-sm font-semibold uppercase tracking-wide opacity-90"><!--Navigation--></h2>
+        <!-- Chevron toggle -->
+        <button id="sidebarChevron" aria-expanded="true" class="rounded-md p-1.5 hover:bg-white/10" title="Collapse sidebar" aria-label="Toggle sidebar">
+          <svg id="chevLeft" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+          <svg id="chevRight" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="hidden h-5 w-5"><path d="M8.25 4.5L15.75 12l-7.5 7.5"/></svg>
+        </button>
+      </div>
+      <nav class="mt-4 flex-1" role="navigation" aria-label="Sidebar">
+        <ul class="space-y-1 text-sm">
+          <li>
+            <a class="flex items-center gap-2 rounded-md px-2 py-1.5 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/40" href="#bio" title="Bio" aria-label="Bio">
+              <span class="nav-icon inline-flex"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm-7 9a7 7 0 0114 0v1H5v-1z"/></svg></span>
+              <span class="nav-label">Bio</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-center gap-2 rounded-md px-2 py-1.5 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/40" href="#projects" title="Projects" aria-label="Projects">
+              <span class="nav-icon inline-flex"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M10 4l2 2h8a2 2 0 012 2v9a3 3 0 01-3 3H5a3 3 0 01-3-3V7a3 3 0 013-3h5z"/></svg></span>
+              <span class="nav-label">Projects</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-center gap-2 rounded-md px-2 py-1.5 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/40" href="#links" title="Links" aria-label="Links">
+              <span class="nav-icon inline-flex"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M10.59 13.41a1.996 1.996 0 010-2.82l3.18-3.18a2 2 0 112.83 2.83l-1.06 1.06m-1.06 1.06l-3.18 3.18a2 2 0 11-2.83-2.83l1.06-1.06"/></svg></span>
+              <span class="nav-label">Links</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-center gap-2 rounded-md px-2 py-1.5 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/40" href="#contact" title="Contact" aria-label="Contact">
+              <span class="nav-icon inline-flex"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M4 6h16a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2zm0 0l8 6 8-6"/></svg></span>
+              <span class="nav-label">Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="mt-6 quick-links">
+        <h3 class="section-title text-sm font-semibold uppercase tracking-wide opacity-90">Quick Links</h3>
+        <ul class="mt-2 space-y-1 text-sm">
+          <li><a class="block truncate rounded-md px-2 py-1.5 hover:bg-white/10" href="https://github.com/pehr">GitHub</a></li>
+          <li><a class="block truncate rounded-md px-2 py-1.5 hover:bg-white/10" href="https://www.linkedin.com/in/pehrassarsson/">LinkedIn</a></li>
+          <li><a class="block truncate rounded-md px-2 py-1.5 hover:bg-white/10" href="#">CV / Resume (PDF)</a></li>
+          <li><a class="block truncate rounded-md px-2 py-1.5 hover:bg-white/10" href="#">CV / Resume (PDF)</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main content (scrolls) -->
+    <main class="content-bg flex-1 rounded-none p-5 md:p-8 shadow-sm h-full overflow-y-auto pb-20">
+      <div class="mx-auto w-full max-w-6xl" id="view"></div>
+    </main>
+  </div>
+
+  <!-- Footer fixed to bottom -->
+  <footer class="fixed bottom-0 inset-x-0 bg-[var(--content-bg)] border-t border-slate-200 px-4 py-3 text-center text-sm text-slate-500">
+    © <span id="year"></span> Padev. All rights reserved.
+  </footer>
+
+  <!-- Views as HTML templates -->
+  <template id="tpl-bio">
+    <section class="prose max-w-none">
+      <h2>About Me</h2>
+      <p>Pehr is an experienced solutions architect with over 10 years of expertise in cloud platforms,
+primarily focusing on AWS. With a solid background as a developer, he has contributed to
+various industries.</p> <p>A key aspect of his role has been creating integration solutions that
+effectively connect different systems.</p> <p>His international experience includes 1.5 years in Milan
+and 2.5 years in London, which has enhanced his ability to navigate multicultural work
+environments and manage complex business challenges. </p> <p>Pehr is determined and responsible,
+with a strong commitment to delivering customer value. His analytical skills and solution-
+oriented approach enable him to quickly understand business challenges and identify effective
+solutions. </p> <p>He is passionate about improving processes by integrating existing systems with
+innovative technologies, resulting in long-term improvements for the customer.</p>
+    </section>
+  </template>
+
+  <template id="tpl-projects">
+    <section class="max-w-none">
+      <h2 class="text-2xl font-bold">Projects</h2>
+      <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="#lunch" class="block rounded-xl border border-slate-200 p-4 hover:shadow">
+          <h3 class="text-base font-semibold">Lunch</h3>
+          <p class="mt-1 text-sm text-slate-600">Using AI to parse restaurant lunch menus.</p>
+          <div class="mt-3 text-xs uppercase tracking-wide text-slate-500">AWS • Python • Tailwind</div>
+        </a>
+        <a href="#" class="block rounded-xl border border-slate-200 p-4 hover:shadow">
+          <h3 class="text-base font-semibold">Project Two</h3>
+          <p class="mt-1 text-sm text-slate-600">Link to repo or live demo.</p>
+          <div class="mt-3 text-xs uppercase tracking-wide text-slate-500">TypeScript • React</div>
+        </a>
+        <a href="#" class="block rounded-xl border border-slate-200 p-4 hover:shadow">
+          <h3 class="text-base font-semibold">Project Three</h3>
+          <p class="mt-1 text-sm text-slate-600">Impact-focused blurb.</p>
+          <div class="mt-3 text-xs uppercase tracking-wide text-slate-500">Go • API</div>
+        </a>
+      </div>
+    </section>
+  </template>
+  <template id="tpl-lunch">
+    <section class="prose max-w-none">
+      <h2 class="text-2xl font-bold">Lunch</h2>
+      <h3><a href="https://lunch.padev.se">lunch.padev.se</a></h3>
+        
+          
+          <p class="mt-1 text-sm text-slate-600">Using AI to parse restaurant lunch menus.</p>
+          <div class="mt-3 text-xs uppercase tracking-wide text-slate-500">AWS • Python • Tailwind</div>
+        
+      
+    </section>
+  </template>
+
+  <template id="tpl-links">
+    <section class="prose max-w-none">
+      <h2>Useful Links</h2>
+      <ul>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Speaking</a></li>
+        <li><a href="#">Newsletter</a></li>
+      </ul>
+    </section>
+  </template>
+
+  <template id="tpl-contact">
+    <section class="prose max-w-none">
+      <h2>Contact</h2>
+      <p>Best way to reach me: <a href="mailto:you@example.com">you@example.com</a></p>
+    </section>
+  </template>
+
+  <script>
+    // ===== UI Elements
+    const sidebar = document.getElementById('sidebar');
+    const chevronBtn = document.getElementById('sidebarChevron');
+    const chevLeft = document.getElementById('chevLeft');
+    const chevRight = document.getElementById('chevRight');
+
+    // ===== Sidebar toggle + UI state
+    function updateChevronUI() {
+      const isExpanded = !sidebar.classList.contains('sidebar-collapsed');
+      chevronBtn?.setAttribute('aria-expanded', String(isExpanded));
+      if (isExpanded) { chevLeft.classList.remove('hidden'); chevRight.classList.add('hidden'); chevronBtn.title = 'Collapse sidebar'; }
+      else { chevLeft.classList.add('hidden'); chevRight.classList.remove('hidden'); chevronBtn.title = 'Expand sidebar'; }
+    }
+    function collapse() { sidebar.classList.add('sidebar-collapsed'); updateChevronUI(); }
+    function expand() { sidebar.classList.remove('sidebar-collapsed'); updateChevronUI(); }
+    function toggleSidebar() { sidebar.classList.toggle('sidebar-collapsed'); updateChevronUI(); }
+    chevronBtn?.addEventListener('click', toggleSidebar);
+
+    // Auto-collapse on small screens
+    const mql = window.matchMedia('(max-width: 768px)');
+    function applyResponsiveSidebar() { mql.matches ? collapse() : expand(); }
+    if (mql.addEventListener) mql.addEventListener('change', applyResponsiveSidebar);
+    else mql.addListener(applyResponsiveSidebar);
+
+    // ===== Tiny hash router (keeps header/sidebar)
+    const routes = { '#bio': 'tpl-bio', '#projects': 'tpl-projects', '#links': 'tpl-links', '#contact': 'tpl-contact', '#lunch': 'tpl-lunch' };
+    function setActiveNav(hash) {
+      document.querySelectorAll('#sidebar nav a').forEach(a => {
+        const active = a.getAttribute('href') === hash;
+        a.classList.toggle('bg-white/20', active);
+        a.setAttribute('aria-current', active ? 'page' : 'false');
+      });
+    }
+    function render(hash) {
+      const view = document.getElementById('view');
+      const tplId = routes[hash] || routes['#bio'];
+      const tpl = document.getElementById(tplId);
+      view.innerHTML = '';
+      if (tpl) view.appendChild(tpl.content.cloneNode(true));
+      setActiveNav(hash || '#bio');
+    }
+
+    // ===== Init
+    window.addEventListener('hashchange', () => render(location.hash));
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+      applyResponsiveSidebar();
+      if (!location.hash) location.hash = '#bio';
+      render(location.hash);
+    });
+  </script>
+</body>
+</html>
