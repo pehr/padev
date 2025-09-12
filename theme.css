@@ -32,3 +32,4 @@
 .sidebar-collapsed .quick-links { display: none !important; }
 
 body { font-family: var(--font-sans); }
+.padev_pad {padding-top: 15px;}

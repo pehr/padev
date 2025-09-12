@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name — Portfolio</title>
+  <title>PADEV</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="theme.css" />
   <style id="inline-collapsed-fix">
@@ -24,7 +24,7 @@
   <header class="themed-header w-full" style="height: var(--header-h);">
     <div class="mx-auto max-w-6xl h-full px-4 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <img src="https://via.placeholder.com/64" alt="Your portrait" class="h-10 w-10 rounded-full object-cover ring-2 ring-white/20" />
+        <img src="images/pehr2small.jpeg" alt="Your portrait" class="h-10 w-10 rounded-full object-cover ring-2 ring-white/20" />
         <div class="leading-tight">
           <h1 class="text-lg font-semibold tracking-tight">Pehr Assarsson</h1>
           <p class="text-xs opacity-80">Cloud Solution Architect • Sweden</p>
@@ -86,9 +86,9 @@
       <div class="mt-6 quick-links">
         <h3 class="section-title text-sm font-semibold uppercase tracking-wide opacity-90">Quick Links</h3>
         <ul class="mt-2 space-y-1 text-sm">
-          <li><a class="block truncate rounded-md px-2 py-1.5 hover:bg-white/10" href="https://github.com/pehr">GitHub</a></li>
-          <li><a class="block truncate rounded-md px-2 py-1.5 hover:bg-white/10" href="https://www.linkedin.com/in/pehrassarsson/">LinkedIn</a></li>
-          <li><a class="block truncate rounded-md px-2 py-1.5 hover:bg-white/10" href="#">CV / Resume (PDF)</a></li>
+          <li><a class="block truncate rounded-md px-2 py-1.5 hover:bg-white/10" href="https://github.com/pehr" target="_blank">GitHub</a></li>
+          <li><a class="block truncate rounded-md px-2 py-1.5 hover:bg-white/10" href="https://www.linkedin.com/in/pehrassarsson/" target="_blank">LinkedIn</a></li>
+          <li><a class="block truncate rounded-md px-2 py-1.5 hover:bg-white/10" href="./docs/pehr_cv.pdf" target="_blank">CV / Resume (PDF)</a></li>
           <li><a class="block truncate rounded-md px-2 py-1.5 hover:bg-white/10" href="#">CV / Resume (PDF)</a></li>
         </ul>
       </div>
@@ -109,15 +109,15 @@
   <template id="tpl-bio">
     <section class="prose max-w-none">
       <h2>About Me</h2>
-      <p>Pehr is an experienced solutions architect with over 10 years of expertise in cloud platforms,
+      <p class="padev_pad">Pehr is an experienced solutions architect with over 10 years of expertise in cloud platforms,
 primarily focusing on AWS. With a solid background as a developer, he has contributed to
-various industries.</p> <p>A key aspect of his role has been creating integration solutions that
-effectively connect different systems.</p> <p>His international experience includes 1.5 years in Milan
+various industries.</p> <p class="padev_pad">A key aspect of his role has been creating integration solutions that
+effectively connect different systems.</p> <p class="padev_pad">His international experience includes 1.5 years in Milan
 and 2.5 years in London, which has enhanced his ability to navigate multicultural work
-environments and manage complex business challenges. </p> <p>Pehr is determined and responsible,
+environments and manage complex business challenges. </p> <p class="padev_pad">Pehr is determined and responsible,
 with a strong commitment to delivering customer value. His analytical skills and solution-
 oriented approach enable him to quickly understand business challenges and identify effective
-solutions. </p> <p>He is passionate about improving processes by integrating existing systems with
+solutions. </p> <p class="padev_pad">He is passionate about improving processes by integrating existing systems with
 innovative technologies, resulting in long-term improvements for the customer.</p>
     </section>
   </template>
@@ -153,11 +153,11 @@ innovative technologies, resulting in long-term improvements for the customer.</
         
           
           <p class="mt-1 text-sm text-slate-600">Using AI to parse restaurant lunch menus.</p>
-          <p class="mt-1 text-sm text-slate-600">It started as a trial to see how far I could get using (at the time) new AI powered development tools. Mainly Cursor</p>
-          <p class="mt-1 text-sm text-slate-600">It's a 99% AWS powered solution. With everything from the Cloudfront/CDK deployment script to the DynamoDB database and API Gateway.</p>
-          <p class="mt-1 text-sm text-slate-600">At the core there's 3 lambda functions. Two of them are focused on parsing the restaurant menus. The first is for the normal lunch menu in plain HTML and the second is for when the lunch menu is a PDF or some kind of image. Both of them creates a CSV of the menu in a S3 bucket. The third lambda updates the DynamoDB when a CSV is created.</p>
-          <p class="mt-1 text-sm text-slate-600">The 1% non AWS, is the actual parsing of the menu. That is handled by sending the page to OpenAIs API. I did some tests on using the models in AWS Bedrock, but at the time I got better responses from OpenAI. When I go back and do the next version of this, I'll probably give Bedrock anther try.</p>
-          <p class="mt-1 text-sm text-slate-600">The menus is parsed every monday by an Eventbridge schedule</p>
+          <p class="padev_pad mt-1 text-sm text-slate-600">It started as a trial to see how far I could get using (at the time) new AI powered development tools. Mainly Cursor</p>
+          <p class="padev_pad mt-1 text-sm text-slate-600">It's a 99% AWS powered solution. With everything from the Cloudfront/CDK deployment script to the DynamoDB database and API Gateway.</p>
+          <p class="padev_pad mt-1 text-sm text-slate-600">At the core there's 3 lambda functions. Two of them are focused on parsing the restaurant menus. The first is for the normal lunch menu in plain HTML and the second is for when the lunch menu is a PDF or some kind of image. Both of them creates a CSV of the menu in a S3 bucket. The third lambda updates the DynamoDB when a CSV is created.</p>
+          <p class="padev_pad mt-1 text-sm text-slate-600">The 1% non AWS, is the actual parsing of the menu. That is handled by sending the page to OpenAIs API. I did some tests on using the models in AWS Bedrock, but at the time I got better responses from OpenAI. When I go back and do the next version of this, I'll probably give Bedrock anther try.</p>
+          <p class="padev_pad mt-1 text-sm text-slate-600">The menus are parsed every monday by an Eventbridge schedule.</p>
           <p class="mt-1 text-sm text-slate-600"></p>
           <div class="mt-3 text-xs uppercase tracking-wide text-slate-500">AWS • Python • Tailwind</div>
         
